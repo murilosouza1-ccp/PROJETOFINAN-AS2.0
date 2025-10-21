@@ -1,0 +1,1272 @@
+/* ================================
+   FONTES E CONFIGURAÇÕES GLOBAIS
+================================ */
+:root {
+  --azul-principal: #3a62e1;
+  --azul-gradiente: #00C2FF;
+  --branco-texto: #FFFFFF;
+  /* Mantido para uso em botões, etc. */
+  --cinza-texto: #555;
+  /* Cor padrão para textos secundários/labels */
+  --verde: #16A34A;
+  --vermelho: #E63333;
+  --fundo-light: #F0F4F8;
+  /* Fundo principal */
+  --card-light: #FFFFFF;
+  /* Fundo dos cards */
+  --texto-light: #0D1140;
+  /* Texto principal (escuro) */
+  --texto-light1: #0015ff;
+  /* Cor de destaque (azul) */
+  --borda-clara: #e0e0e0;
+  /* Borda padrão */
+  --fundo-interno: #F0F4F8;
+  /* Fundo de itens internos (igual ao fundo principal) */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Layout Base */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--fundo-light);
+  color: var(--texto-light);
+  display: flex;
+  flex-direction: column;
+}
+
+/* REMOVIDO: Bloco body.dark e regras body.dark específicas */
+
+/* ================================
+   TELA DE LOGIN (CONTABLY)
+================================ */
+.login-screen-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.login-form-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 50px;
+}
+
+.login-form-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form-box h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.login-form-box .form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-form-box .form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.login-form-box .form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 60px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Cor texto input login */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666;
+}
+
+.login-options a {
+  color: var(--vermelho);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-login-main {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 60px;
+  background-color: var(--azul-principal);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login-main:hover {
+  background-color: #3a3dbd;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.register-link a {
+  color: var(--azul-principal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.social-login p {
+  color: #888;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.btn-google {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.btn-google:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-google img {
+  width: 24px;
+  height: 24px;
+}
+
+.login-art-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, var(--azul-gradiente), var(--azul-principal));
+  padding: 40px;
+  text-align: center;
+}
+
+.login-logo {
+  max-width: 500px;
+  margin-bottom: -230px;
+}
+
+.login-illustration {
+  max-width: 1000px;
+  margin-bottom: 200px;
+}
+
+.login-art-side p {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* RESET DE SENHA */
+.reset-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  backdrop-filter: blur(5px);
+}
+
+.reset-box {
+  background: #fff;
+  color: #111;
+  padding: 35px;
+  border-radius: 60px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.reset-box input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 60px;
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.reset-box button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 60px;
+  background-color: var(--azul-principal);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* DASHBOARD */
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: var(--fundo-light);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 300px;
+  background-color: var(--card-light);
+  padding: 20px 20px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--borda-clara);
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo img {
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Removido FILL */
+.sidebar-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.sidebar-profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--texto-light1);
+}
+
+.sidebar-profile h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--texto-light1);
+}
+
+.sidebar-profile span {
+  color: var(--cinza-texto);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--verde);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.sidebar-nav {
+  margin-bottom: 30px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 60px;
+  text-decoration: none;
+  color: var(--cinza-texto);
+  font-weight: 800;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-nav li a img {
+  width: 40px;
+  height: 40px;
+  filter: none;
+  transition: filter 0.3s ease-in-out;
+}
+
+/* REMOVIDO: Regras de filter para dark mode */
+.sidebar-nav li.active a,
+.sidebar-nav li a:hover {
+  background-color: var(--azul-principal);
+  color: var(--branco-texto);
+}
+
+.sidebar-nav li.active a img,
+.sidebar-nav li a:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* Ícone branco no hover/active */
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-sidebar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 60px;
+  background-color: var(--fundo-interno);
+  border: 1px solid var(--borda-clara);
+  color: var(--cinza-texto);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.btn-sidebar i {
+  width: 24px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.btn-sair {
+  color: var(--vermelho);
+}
+
+/* REMOVIDO: Estilos .btn-light-mode, .switch, .slider */
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 30px;
+  min-height: 0;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.card-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: var(--card-light);
+  border-radius: 50px;
+  padding: 15px;
+  border: 1px solid #0059ff;
+  /* Borda azul padrão */
+}
+
+.card h2 {
+  font-size: 1.1em;
+  font-weight: 800;
+  color: var(--texto-light);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* CARD SALÁRIO CENTRALIZADO */
+.card-salario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 15px;
+  flex-basis: 30%;
+}
+
+.card-salario h2 {
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.card-salario .salario-input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--texto-light);
+  width: auto;
+  max-width: 100%;
+  text-align: center !important;
+  padding: 5px 10px;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  box-sizing: border-box;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.card-salario .salario-input::-webkit-outer-spin-button,
+.card-salario .salario-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.card-salario .salario-input:hover {
+  color: var(--azul-principal);
+}
+
+.card-salario .salario-input:focus {
+  cursor: text;
+  border-bottom-color: var(--azul-principal);
+  color: var(--texto-light);
+}
+
+/* RESUMO MENSAL */
+.card-resumo-mensal {
+  flex-basis: 70%;
+}
+
+.resumo-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.resumo-item {
+  background-color: var(--fundo-interno);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.resumo-item span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cinza-texto);
+}
+
+.resumo-item p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--texto-light);
+}
+
+#saldoAtual.saldo-positivo {
+  color: var(--verde);
+}
+
+#saldoAtual.saldo-negativo {
+  color: var(--vermelho);
+}
+
+#salvarMes {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 60px;
+  background-color: var(--azul-principal);
+  color: var(--branco-texto);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#salvarMes:hover {
+  background-color: #3a3dbd;
+}
+
+/* DISTRIBUIÇÃO E CARDS PEQUENOS */
+.card-distribuicao {
+  flex-basis: 60%;
+  padding: 15px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-col-small {
+  flex-basis: 40%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  grid-template-areas: "planejamento gastos" "planejamento cartoes";
+}
+
+.card-small {
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 60px;
+  border-color: #0059ff !important;
+  /* Força borda azul nos small cards */
+}
+
+.card-small:nth-child(1) {
+  grid-area: planejamento;
+}
+
+.card-small:nth-child(2) {
+  grid-area: gastos;
+}
+
+.card-small:nth-child(3) {
+  grid-area: cartoes;
+}
+
+.card-small:nth-child(2),
+.card-small:nth-child(3) {
+  padding: 0px;
+  justify-content: center;
+}
+
+.card-small h2 {
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-size: 1.2em;
+  font-weight: 800;
+  color: var(--texto-light);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card-illustration {
+  height: 200px;
+  max-width: 100%;
+  margin-top: 10px;
+  margin-bottom: 0;
+  object-fit: contain;
+}
+
+.card-small:nth-child(1) .card-illustration {
+  height: 160px;
+}
+
+.card-small input {
+  width: 100%;
+  border: 1px solid var(--borda-clara);
+  background: var(--fundo-interno);
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--texto-light);
+  text-align: center;
+}
+
+/* LISTAS */
+.card-lista {
+  flex: 1;
+}
+
+.card-lista.full-width {
+  width: 100%;
+}
+
+.adicionar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.adicionar-item input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--borda-clara);
+  border-radius: 10px;
+  background-color: var(--fundo-interno);
+  color: var(--texto-light);
+}
+
+.btn-add-item {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--azul-principal);
+  color: var(--branco-texto);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lista-gastos,
+.lista-historico {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.gasto-item,
+.historico-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--fundo-interno);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.gasto-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gasto-item-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.gasto-item-info span {
+  font-weight: 600;
+  color: var(--texto-light);
+}
+
+.gasto-valor {
+  font-weight: 700;
+  color: var(--texto-light);
+}
+
+.historico-item span {
+  color: var(--texto-light);
+  font-weight: 600;
+}
+
+.btn-excluir {
+  background: var(--vermelho);
+  color: var(--branco-texto);
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.historico-item button {
+  background: var(--azul-principal);
+  color: var(--branco-texto);
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Botão Carregar */
+.historico-item button.btn-excluir {
+  background: var(--vermelho);
+}
+
+/* Garante cor excluir */
+
+
+.card-link {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-link a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* GRÁFICOS CENTRALIZADOS */
+.distribuicao-graficos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  height: 250px;
+  margin-top: 15px;
+}
+
+.distribuicao-barras-container {
+  flex-basis: 60%;
+  max-width: 60%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.distribuicao-gauge-container {
+  flex-basis: 30%;
+  max-width: 30%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#graficoGastosBarras,
+#graficoGastosGauge {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.gauge-percentual {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--texto-light);
+}
+
+.gauge-aviso {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: var(--vermelho);
+  font-weight: 600;
+  display: none;
+}
+
+/* MODAL DE PERFIL */
+.modal-container {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-box {
+  background-color: var(--card-light);
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-box .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--texto-light);
+}
+
+.modal-box .form-group input {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--fundo-interno);
+  border: 1px solid var(--borda-clara);
+  border-radius: 8px;
+  color: var(--texto-light);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.btn-save-profile {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--verde);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+  .card-row {
+    flex-direction: column;
+  }
+
+  .card-col-small {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "planejamento gastos cartoes";
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    z-index: 1100;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .login-art-side {
+    display: none;
+  }
+
+  .login-form-side {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 15px;
+  }
+
+  .card-row {
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .resumo-grid {
+    flex-direction: column;
+  }
+
+  .card-col-small {
+    grid-template-columns: 1fr;
+    grid-template-areas: "planejamento" "gastos" "cartoes";
+  }
+
+  .distribuicao-graficos-container {
+    flex-direction: column;
+    height: auto;
+    gap: 30px;
+  }
+
+  .distribuicao-barras-container,
+  .distribuicao-gauge-container {
+    flex-basis: auto;
+    max-width: 90%;
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* ================================
+   RESPONSIVIDADE (AJUSTADA)
+================================ */
+
+/* Telas Médias (Tablets, Laptops Pequenos) */
+@media (max-width: 1200px) {
+  .card-row {
+    flex-direction: column;
+    /* Empilha as linhas de cards */
+    gap: 15px;
+    /* Reduz o espaço entre linhas empilhadas */
+  }
+
+  .card-salario,
+  .card-resumo-mensal,
+  .card-distribuicao,
+  .card-col-small {
+    flex-basis: 100%;
+    /* Fazem os cards ocuparem a largura total */
+  }
+
+  .card-col-small {
+    /* Mantém 3 colunas se a tela ainda for razoavelmente larga */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    /* Altura automática */
+    grid-template-areas: "planejamento gastos cartoes";
+    gap: 15px;
+    /* Reduz espaço entre cards pequenos */
+  }
+}
+
+/* Telas Menores (Tablets em Retrato, Celulares Maiores) */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    /* Fica fixo e "some" */
+    left: -300px;
+    /* Esconde fora da tela */
+    width: 280px;
+    /* Pode diminuir um pouco se quiser */
+    height: 100%;
+    z-index: 1100;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    /* Sombra opcional quando abrir */
+  }
+
+  .sidebar.active {
+    /* Classe a ser adicionada via JS para mostrar */
+    left: 0;
+  }
+
+  /* Adicionar um botão para abrir/fechar a sidebar (você precisará criar este botão no HTML e JS) */
+  /* Exemplo: .menu-toggle-button { display: block; position: fixed; ... } */
+
+  .main-content {
+    /* Ajusta padding se a sidebar some */
+    padding: 20px;
+  }
+
+  .login-art-side {
+    display: none;
+    /* Esconde a imagem no login */
+  }
+
+  .login-form-side {
+    flex-basis: 100%;
+    /* Formulário ocupa tudo */
+    padding: 30px;
+    /* Reduz padding no form */
+  }
+
+  .card-col-small {
+    /* Em tablets menores, 2 colunas podem ser melhores */
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "planejamento planejamento"
+      /* Planejamento ocupa 2 espaços */
+      "gastos cartoes";
+    /* Gastos e Cartões abaixo */
+  }
+
+  .card-small:nth-child(1) {
+    /* Ajuste para Planejamento ocupar mais espaço */
+    grid-area: planejamento;
+    /* Poderia ajustar padding/imagem aqui se necessário */
+  }
+
+  .card-small:nth-child(2) {
+    grid-area: gastos;
+  }
+
+  .card-small:nth-child(3) {
+    grid-area: cartoes;
+  }
+}
+
+/* Telas Pequenas (Celulares em Retrato) */
+@media (max-width: 600px) {
+  .main-content {
+    padding: 15px;
+    /* Menos padding lateral */
+  }
+
+  .card-row {
+    gap: 10px;
+    /* Menos espaço entre cards empilhados */
+    margin-bottom: 10px;
+  }
+
+  .card {
+    border-radius: 30px;
+    /* Bordas um pouco menos arredondadas */
+    padding: 10px;
+    /* Menos padding interno nos cards */
+  }
+
+  .card h2 {
+    font-size: 1em;
+    /* Título um pouco menor */
+    margin-bottom: 8px;
+  }
+
+  /* Ajustes específicos para cards no mobile */
+  .card-salario .salario-input {
+    font-size: 2rem;
+    /* Tamanho da fonte do salário menor */
+  }
+
+  .resumo-grid {
+    flex-direction: column;
+    /* Itens do resumo empilhados */
+    gap: 10px;
+    /* Espaço entre itens empilhados */
+  }
+
+  .resumo-item {
+    padding: 15px;
+    /* Menos padding nos itens de resumo */
+  }
+
+  .resumo-item span {
+    font-size: 0.8rem;
+  }
+
+  .resumo-item p {
+    font-size: 1.3rem;
+  }
+
+
+  .card-col-small {
+    grid-template-columns: 1fr;
+    /* Uma coluna só */
+    grid-template-areas:
+      /* Empilha todos */
+      "planejamento"
+      "gastos"
+      "cartoes";
+    gap: 10px;
+  }
+
+  .card-small {
+    border-radius: 30px;
+    /* Bordas consistentes */
+    padding: 15px;
+    /* Padding interno razoável */
+  }
+
+  .card-small:nth-child(2),
+  .card-small:nth-child(3) {
+    padding: 10px;
+    /* Mantém padding menor para gastos/cartões */
+  }
+
+  .card-illustration {
+    height: 120px;
+    /* Ícones menores */
+    margin-top: 5px;
+  }
+
+  .card-small:nth-child(1) .card-illustration {
+    height: 100px;
+    /* Planejamento um pouco menor também */
+  }
+
+
+  .distribuicao-graficos-container {
+    flex-direction: column;
+    /* Empilha os gráficos */
+    height: auto;
+    /* Altura automática */
+    gap: 25px;
+  }
+
+  .distribuicao-barras-container,
+  .distribuicao-gauge-container {
+    flex-basis: auto;
+    /* Remove base flexível */
+    max-width: 100%;
+    /* Ocupa a largura disponível */
+    width: 100%;
+    height: 180px;
+    /* Altura menor para os gráficos */
+  }
+
+  .gauge-percentual {
+    font-size: 1.5em;
+    top: 48%;
+  }
+
+  /* Ajusta % do gauge */
+  .gauge-aviso {
+    font-size: 0.7em;
+    bottom: 8%;
+  }
+
+
+  /* Ajustes gerais de fontes e botões */
+  body {
+    font-size: 14px;
+    /* Reduz tamanho base da fonte */
+  }
+
+  .btn-login-main,
+  .reset-box button,
+  #salvarMes,
+  .btn-add-item,
+  .btn-save-profile {
+    padding: 12px;
+    /* Botões um pouco menores */
+    font-size: 1rem;
+  }
+
+  .lista-gastos,
+  .lista-historico {
+    max-height: 250px;
+    /* Lista um pouco menor */
+  }
+
+  .gasto-item,
+  .historico-item {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .gasto-item-info img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .btn-excluir,
+  .historico-item button {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  /* Login Form Mobile */
+  .login-form-box h2 {
+    font-size: 2rem;
+  }
+
+  .login-form-box .form-group input {
+    padding: 12px 14px;
+  }
+
+}
+/* Estilo Base do Botão de Menu (Escondido em Telas Grandes) */
+.menu-toggle-button {
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fixo na tela */
+  top: 15px;
+  left: 15px;
+  z-index: 1200; /* Acima da sidebar */
+  background-color: var(--azul-principal);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilos para Mostrar o Botão em Telas Pequenas */
+@media (max-width: 900px) {
+  .menu-toggle-button {
+    display: block; /* Mostra o botão */
+  }
+  .main-content {
+     padding-top: 70px; /* Adiciona espaço no topo do conteúdo para não ficar atrás do botão */
+  }
+}
+
+/* Ajuste fino para telas muito pequenas */
+ @media (max-width: 600px) {
+   .menu-toggle-button {
+     top: 10px;
+     left: 10px;
+     width: 40px;
+     height: 40px;
+     font-size: 1.1rem;
+   }
+    .main-content {
+     padding-top: 60px; 
+   }
+ }

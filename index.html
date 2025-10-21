@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contably - Seu Gerenciador</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css?v=5"> <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body> <div class="login-screen-container" id="loginContainer">
+    <div class="login-form-side">
+      <div class="login-form-box">
+        <h2 id="loginTitle">LOGIN</h2>
+        <div class="form-group" id="nomeCadastroGroup" style="display:none;"><label for="nomeCadastro">Nome
+            Completo</label><input type="text" id="nomeCadastro" placeholder="Digite seu nome completo"></div>
+        <div class="form-group" id="fotoPerfilGroup" style="display:none;"><label for="fotoPerfil"
+            class="custom-file-upload"><i class="fas fa-camera"></i> Escolher Foto de Perfil</label><input type="file"
+            id="fotoPerfil" accept="image/*"></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email"
+            placeholder="seuemail@exemplo.com"></div>
+        <div class="form-group"><label for="senha">Senha</label><input type="password" id="senha"
+            placeholder="Sua senha"></div>
+        <div class="login-options"><label><input type="checkbox"> Lembrar-me</label><a href="#"
+            onclick="abrirResetSenha()">Esqueceu sua senha?</a></div>
+        <p id="loginMsg" class="feedback-msg"></p>
+        <button id="authButton" class="btn-login-main" onclick="login()">Entrar</button>
+        <div class="register-link">
+          <p>Não tem conta? <a href="#" onclick="alternarCadastro()">Inscreva-se</a></p>
+        </div>
+        <div class="social-login">
+          <p>LOGAR COM</p><button class="btn-google"
+            onclick="alert('Funcionalidade de Login com Google em desenvolvimento!')"><img
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"></button>
+        </div>
+      </div>
+    </div>
+    <div class="login-art-side">
+      <img src="ELEMENTOS/NOVA LOOGO BRANCO.svg" alt="Contably Logo" class="login-logo"> 
+      <img src="ELEMENTOS/ARTE LOGIN.svg" alt="Ilustração de Finanças" class="login-illustration">
+    </div>
+  </div>
+
+  <div class="reset-container" id="resetContainer" style="display:none;">
+    <div class="reset-box">
+      <h2>Redefinir Senha</h2><input type="email" id="resetEmail" placeholder="Digite seu e-mail cadastrado"><input
+        type="password" id="novaSenha" placeholder="Nova senha" style="display:none;"><button id="verificarEmailBtn"
+        onclick="verificarEmail()">Verificar</button><button id="salvarNovaSenhaBtn" onclick="salvarNovaSenha()">Salvar
+        Nova Senha</button>
+      <p id="resetMsg"></p>
+      <p><a href="#" onclick="fecharResetSenha()">Voltar ao login</a></p>
+    </div>
+  </div>
+
+  <div class="dashboard-container" id="app" style="display:none;">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><img id="sidebarLogoImg" src="ELEMENTOS/NOVA LOGO (1).png" alt="Contably Logo"></div> 
+      <div class="sidebar-profile" onclick="abrirModalPerfil()" title="Editar Perfil"><img id="fotoUsuario" src=""
+          alt="Foto de Perfil">
+        <h1 id="nomeUsuario">Usuário</h1><span>STATUS | ATIVO <span class="status-dot"></span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="active"><a href="#" onclick="navigate('inicio', this)"><img src="ELEMENTOS/ICON INICIO DARK.svg"
+                alt="Início">
+              INÍCIO</a></li>
+          <li><a href="#" onclick="navigate('cartoes', this)"><img src="ELEMENTOS/ICON CARTÃO DARK.svg" alt="Cartões">
+              CARTÕES</a>
+          </li>
+          <li><a href="#" onclick="navigate('gastos', this)"><img src="ELEMENTOS/ICON GASTOS DARK.svg" alt="Gastos">
+              GASTOS</a></li>
+          <li><a href="#" onclick="navigate('planejamento', this)"><img src="ELEMENTOS/ICON PLANEJAMENTO DARK.svg"
+                alt="Planejamento">
+              PLANEJAMENTO</a></li>
+          <li><a href="#" onclick="navigate('historico', this)"><img src="ELEMENTOS/nICON HISTORICO DARK.svg"
+                alt="Histórico">
+              HISTÓRICO</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-sidebar btn-perfil" onclick="abrirModalPerfil()"><i
+            class="fas fa-user"></i> PERFIL</button>
+        <button class="btn-sidebar btn-sair" id="logoutBtn"
+          onclick="logout()"><i class="fas fa-sign-out-alt"></i> SAIR</button>
+      </div>
+    </aside>
+    <main class="main-content">
+      <button class="menu-toggle-button" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i> </button>
+      <section id="view-inicio" class="view active">
+        <div class="card-row">
+          <div class="card card-salario">
+            <h2>SALÁRIO</h2>
+            <input type="text" id="salarioInput" class="salario-input" value="R$: 1.200,00" onfocus="this.select()"
+              onblur="formatarSalario()" onkeydown="handleSalarioEnter(event)">
+          </div>
+          <div class="card card-resumo-mensal">
+            <h2>RESUMO MENSAL</h2>
+            <div class="resumo-grid">
+              <div class="resumo-item"><span>FIXOS</span>
+                <p id="totalFixos">R$ 0,00</p>
+              </div>
+              <div class="resumo-item"><span>VARIÁVEIS</span>
+                <p id="totalVariaveis">R$ 0,00</p>
+              </div>
+              <div class="resumo-item"><span>SALDO</span>
+                <p id="saldoAtual" class="saldo-positivo">R$ 0,00</p>
+              </div>
+            </div>
+            <button id="salvarMes">SALVAR MÊS</button>
+          </div>
+        </div>
+        <div class="card-row">
+          <div class="card card-distribuicao">
+            <h2>DISTRIBUIÇÃO</h2>
+            <div class="distribuicao-graficos-container">
+              <div class="distribuicao-barras-container">
+                <canvas id="graficoGastosBarras"></canvas>
+              </div>
+              <div class="distribuicao-gauge-container">
+                <canvas id="graficoGastosGauge"></canvas>
+                <div id="gaugePercentual" class="gauge-percentual">0%</div>
+                <div class="gauge-aviso">Controle seus gastos!</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-col-small">
+            <div class="card card-small card-link"><a href="#"
+                onclick="navigate('planejamento', document.querySelector('.sidebar-nav li a[onclick*=\'planejamento\']'))">
+                <h2>PLANEJAMENTO</h2><img src="ELEMENTOS/ICON PLANEJAMENTO.png" alt="Planejamento"
+                  class="card-illustration">
+              </a></div>
+            <div class="card card-small card-link"><a href="#"
+                onclick="navigate('gastos', document.querySelector('.sidebar-nav li a[onclick*=\'gastos\']'))">
+                <h2>GASTOS</h2><img src="ELEMENTOS/ICON GASTOS.png" alt="Gastos" class="card-illustration">
+              </a></div>
+            <div class="card card-small card-link"><a href="#"
+                onclick="navigate('cartoes', document.querySelector('.sidebar-nav li a[onclick*=\'cartoes\']'))">
+                <h2>CARTÕES</h2><img src="ELEMENTOS/ICON CARTÕES.png" alt="Cartões" class="card-illustration">
+              </a></div>
+          </div>
+        </div>
+      </section>
+      <section id="view-cartoes" class="view">
+        <div class="card-row">
+          <div class="card card-lista full-width">
+            <h2>GASTOS FIXOS (CARTÕES)</h2>
+            <div class="adicionar-item"><input type="text" id="nomeFixo" placeholder="Nome do gasto fixo"><input
+                type="text" id="logoFixo" placeholder="URL do logo (opcional)"><input type="number" id="valorFixo"
+                placeholder="Valor"><button id="addFixo" class="btn-add-item">Adicionar</button></div>
+            <div id="listaFixos" class="lista-gastos"></div>
+          </div>
+        </div>
+      </section>
+      <section id="view-gastos" class="view">
+        <div class="card-row">
+          <div class="card card-lista full-width">
+            <h2>GASTOS VARIÁVEIS</h2>
+            <div class="adicionar-item"><input type="text" id="descVariavel" placeholder="Descrição do gasto"><input
+                type="number" id="valorVariavel" placeholder="Valor do gasto"><button id="addVariavel"
+                class="btn-add-item">Adicionar</button></div>
+            <div id="listaVariaveis" class="lista-gastos"></div>
+          </div>
+        </div>
+      </section>
+      <section id="view-planejamento" class="view">
+        <div class="card-row">
+          <div class="card card-lista full-width">
+            <h2>PLANEJAMENTO</h2>
+            <p>Meta de economia:</p><input type="number" id="metaEconomia" placeholder="Definir meta...">
+            <p id="statusMeta"></p>
+          </div>
+        </div>
+      </section>
+      <section id="view-historico" class="view">
+        <div class="card-row">
+          <div class="card card-lista full-width">
+            <h2>HISTÓRICO MENSAL</h2>
+            <ul id="listaHistorico" class="lista-historico"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="profileModal" class="modal-container" style="display:none;">
+    <div class="modal-box"><span class="close-btn" onclick="fecharModalPerfil()">&times;</span>
+      <h2>Editar Perfil</h2>
+      <div class="form-group"><label for="fotoPerfilModal"><i class="fas fa-camera"></i> Alterar Foto de
+          Perfil</label><input type="file" id="fotoPerfilModal" accept="image/*"></div>
+      <div class="form-group"><label for="nomeUsuarioModal"><i class="fas fa-user"></i> Nome de Usuário</label><input
+          type="text" id="nomeUsuarioModal" placeholder="Seu nome"></div>
+      <div class="form-group"><label for="emailUsuarioModal"><i class="fas fa-envelope"></i> E-mail</label><input
+          type="email" id="emailUsuarioModal" placeholder="Seu e-mail"></div>
+      <div class="form-group"><label for="senhaAtualModal"><i class="fas fa-lock"></i> Senha Atual (para
+          confirmar)</label><input type="password" id="senhaAtualModal" placeholder="Senha atual"></div>
+      <div class="form-group"><label for="novaSenhaModal"><i class="fas fa-key"></i> Nova Senha (opcional)</label><input
+          type="password" id="novaSenhaModal" placeholder="Deixe em branco se não quiser mudar"></div>
+      <p id="profileMsg"></p><button id="saveProfileBtn" class="btn-save-profile" onclick="salvarPerfil()">Salvar Alterações</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script> </body>
+
+</html>
